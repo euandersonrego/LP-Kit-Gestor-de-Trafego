@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         /* Applying Inter font to the whole body */
         body {
@@ -82,10 +85,11 @@
                 <div class="aspect-w-16 aspect-h-9 bg-black rounded-lg flex items-center justify-center">
                      <img src="https://placehold.co/1280x720/000000/333333?text=Seu+V%C3%ADdeo+de+Vendas+Aqui" 
                          alt="Placeholder para o vídeo de vendas" 
-                         class="rounded-lg w-full h-full object-cover">
+                         class="rounded-lg w-full h-full object-cover"
+                         onerror="this.onerror=null;this.src='https://placehold.co/1280x720/000000/FFFFFF?text=Video+Indispon%C3%ADvel';">
                 </div>
             </div>
-             <a href="#buy-now" class="mt-12 inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-lg py-4 px-10 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow">
+             <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="mt-12 inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-lg py-4 px-10 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow">
                 QUERO MEU KIT E MEU 1º CLIENTE AGORA!
             </a>
         </div>
@@ -115,38 +119,64 @@
                 <h2 class="text-3xl md:text-4xl font-bold">Sua Suíte de Aplicativos de Prospecção</h2>
                 <p class="mt-4 text-lg text-gray-400">Receba acesso imediato à suíte de ferramentas que automatiza sua prospecção e te posiciona como um profissional de alto nível.</p>
             </div>
-            <div class="mt-16 max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">01</span><h4 class="text-xl font-bold mt-4">App de Prospecção</h4><p class="text-gray-400 mt-2 flex-grow">Uma ferramenta online que encontra dezenas de negócios locais que precisam de um gestor de tráfego, entregando clientes em potencial numa bandeja.</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">02</span><h4 class="text-xl font-bold mt-4">App Gerador de Copy com I.A.</h4><p class="text-gray-400 mt-2 flex-grow">Insira a informação do cliente e deixe nossa I.A. criar mensagens de abordagem personalizadas e persuasivas que geram reuniões.</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">03</span><h4 class="text-xl font-bold mt-4">App Criador de Apresentação</h4><p class="text-gray-400 mt-2 flex-grow">Construa uma apresentação de impacto em minutos. Este app monta um slider profissional para você fechar contratos e demonstrar autoridade.</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col bg-green-400/10"><span class="text-5xl font-black text-green-400">BÔNUS</span><h4 class="text-xl font-bold mt-4 text-green-300">Manual Estratégico (PDF)</h4><p class="text-gray-400 mt-2 flex-grow">O guia completo para você extrair o máximo de cada aplicativo, com o passo a passo para usar as ferramentas e garantir seus resultados.</p></div>
+            <div class="mt-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">01</span><h4 class="text-xl font-bold mt-4">Central de Prospecção</h4><p class="text-gray-400 mt-2 flex-grow">Seu centro de comando para encontrar clientes, reunindo as melhores estratégias e ferramentas de prospecção em um só lugar.</p><p class="text-green-400 font-semibold mt-4">+ Aula passo a passo.</p></div>
+                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">02</span><h4 class="text-xl font-bold mt-4">Arsenal de Prospecção</h4><p class="text-gray-400 mt-2 flex-grow">Acelere e personalize sua comunicação com modelos de mensagens de alta conversão para cada etapa do funil de vendas.</p><p class="text-green-400 font-semibold mt-4">+ Aula passo a passo.</p></div>
+                <div class="glass-card p-8 rounded-2xl flex flex-col"><span class="text-5xl font-black text-green-400/30">03</span><h4 class="text-xl font-bold mt-4">Gerador de Propostas e Kickoff</h4><p class="text-gray-400 mt-2 flex-grow">Crie propostas comerciais profissionais e conduza a primeira reunião com o cliente usando um roteiro estratégico.</p><p class="text-green-400 font-semibold mt-4">+ Aula passo a passo.</p></div>
+                <div class="glass-card p-8 rounded-2xl flex flex-col bg-green-400/10"><span class="text-5xl font-black text-green-400">BÔNUS</span><h4 class="text-xl font-bold mt-4 text-green-300">Super Aula Bônus</h4><p class="text-gray-400 mt-2 flex-grow">Aperte os botões certos: uma aula completa sobre como criar sua primeira campanha de conversão no Gerenciador de Anúncios.</p></div>
             </div>
         </div>
     </div>
     
-    <!-- VALUE ANCHORING SECTION -->
+    <!-- SPECIAL BONUS SECTION -->
     <div class="py-16 sm:py-24">
+        <div class="container mx-auto px-6">
+            <div class="bg-gray-800/50 ring-1 ring-green-400/30 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="bg-green-400/10 text-green-300 font-bold py-1 px-4 rounded-full text-sm">BÔNUS ESPECIAL (LIBERADO APÓS 7 DIAS)</span>
+                    <h3 class="text-3xl font-bold mt-2">Receba o Código-Fonte dos Apps (White Label)</h3>
+                </div>
+                <div class="mt-6 max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-400">
+                        Isso mesmo. Além de usar as ferramentas, você receberá o **código-fonte completo em HTML, CSS e JavaScript** de todos os aplicativos. Contrate um programador para modificar, ou se você entende de código, personalize como quiser.
+                    </p>
+                    <p class="mt-4 text-lg font-semibold text-white">
+                        Você terá o direito de vender os aplicativos como se fossem seus, criando sua própria fonte de renda passiva. É uma oportunidade de negócio completa entregue a você.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VALUE ANCHORING SECTION -->
+    <div class="py-16 sm:py-24 border-t border-white/5">
         <div class="container mx-auto px-6 max-w-3xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold">O Valor Real da sua Suíte de Apps</h2>
-            <p class="mt-4 text-lg text-gray-400">Contratar um desenvolvedor ou assinar ferramentas SaaS para ter essas funcionalidades custaria uma fortuna. Este é o valor de mercado do que você está recebendo:</p>
-            <div class="mt-12 space-y-6 text-left">
-                <div class="glass-card p-6 rounded-xl border-green-400/50"><div class="flex justify-between items-center"><div class="flex items-center gap-4"><svg class="w-8 h-8 text-green-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 01-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 013.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 013.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 01-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.572L16.5 21.75l-.398-1.178a3.375 3.375 0 00-2.455-2.456L12.75 18l1.178-.398a3.375 3.375 0 002.455-2.456L16.5 14.25l.398 1.178a3.375 3.375 0 002.456 2.456l1.178.398-1.178.398a3.375 3.375 0 00-2.456 2.456z" /></svg><div><h4 class="text-lg font-bold text-white">App Gerador de Copy com I.A.</h4><p class="text-sm text-gray-400">Valor Anual de Ferramenta Similar</p></div></div><span class="text-lg font-bold text-gray-400 line-through">R$ 297,00</span></div></div>
-                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">App de Prospecção de Clientes</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div></div>
-                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">App Criador de Apresentação</span><span class="text-lg font-bold text-gray-500 line-through">R$ 147,00</span></div></div>
-                <div class="glass-card p-4 rounded-xl bg-green-400/10"><div class="flex justify-between items-center"><span class="text-lg text-green-300">Manual de Uso Estratégico (PDF)</span><span class="text-lg font-bold text-green-400">De Graça</span></div></div>
+            <h2 class="text-3xl md:text-4xl font-bold">O Valor Real de Tudo Que Você Leva</h2>
+            <p class="mt-4 text-lg text-gray-400">Se fosse comprar cada item separadamente, este seria o investimento. Mas hoje, a condição é especial:</p>
+            <div class="mt-12 space-y-4 text-left">
+                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">Arsenal de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 297,00</span></div></div>
+                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">Central de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div></div>
+                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">Gerador de Propostas e Kickoff</span><span class="text-lg font-bold text-gray-500 line-through">R$ 147,00</span></div></div>
+                <div class="glass-card p-4 rounded-xl"><div class="flex justify-between items-center"><span class="text-lg">Aulas Práticas de Implementação</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div></div>
+                <div class="glass-card p-6 rounded-xl border-green-400/50"><div class="flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="gem" class="w-8 h-8 text-green-400 flex-shrink-0"></i><div><h4 class="text-lg font-bold text-white">Código Fonte dos Apps (PLR)</h4><p class="text-sm text-gray-400">Bônus com Direitos de Revenda</p></div></div><span class="text-lg font-bold text-gray-400 line-through">R$ 497,00</span></div></div>
+                <div class="glass-card p-4 rounded-xl bg-green-400/10"><div class="flex justify-between items-center"><span class="text-lg text-green-300">Super Aula Bônus</span><span class="text-lg font-bold text-green-400">De Graça</span></div></div>
+            </div>
+            <div class="mt-8 bg-gray-800/50 ring-1 ring-white/10 rounded-lg p-6 max-w-md mx-auto">
+                <p class="text-lg text-gray-300">Valor total que você <span class="font-bold">NÃO</span> vai pagar:</p>
+                <p class="text-5xl font-extrabold text-red-500 line-through mt-2">R$ 1.335,00</p>
             </div>
         </div>
     </div>
 
     <!-- CTA Section -->
-    <div id="buy-now" class="py-16 sm:py-24 bg-gray-900/70 border-t border-white/5">
+    <div id="buy-now" class="py-16 sm:py-24 bg-gray-900/70 border-t border-b border-white/5">
         <div class="container mx-auto px-6 text-center">
             <div class="bg-gray-800 ring-1 ring-white/10 max-w-2xl mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl">
                 <p class="text-sm font-bold uppercase tracking-widest text-green-400">OFERTA DE LANÇAMENTO</p>
-                <h3 class="text-2xl font-bold mt-4">Acesse sua suíte de aplicativos hoje por:</h3>
+                <h3 class="text-2xl font-bold mt-4">Acesse sua suíte completa hoje por:</h3>
                 <p class="text-6xl font-extrabold my-4 text-white">R$ 37</p>
                 <p class="text-xl mb-6">ou em <span class="font-bold text-green-400">5x de R$ 8,19</span> no cartão</p>
-                <a href="#seu-link-de-checkout-aqui" class="inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-2xl py-5 px-14 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow w-full">QUERO ACESSO IMEDIATO AOS APPS!</a>
+                <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-2xl py-5 px-14 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow w-full">QUERO ACESSO IMEDIATO COM TODOS OS BÔNUS!</a>
                 <p class="mt-6 text-gray-400">Compra 100% segura. Acesso vitalício. Risco Zero.</p>
             </div>
         </div>
@@ -164,7 +194,7 @@
                 </div>
                 <div class="mt-6 max-w-2xl mx-auto">
                     <p class="text-lg text-gray-400">
-                        Seu investimento é 100% seguro. Você tem 7 dias completos para acessar toda a suíte de aplicativos. Se ao final desse período você não sentir que este foi o melhor e mais rápido caminho para destravar seu primeiro cliente, eu insisto que peça seu dinheiro de volta.
+                        Seu investimento é 100% seguro. Você tem 7 dias completos para acessar toda a suíte de aplicativos. Se ao final desse período você não sentir que este foi o melhor e mais rápido caminho para destravar seu primeiro cliente, eu insisto que peça seu dinheiro de volta. O Bônus White Label com o código-fonte será liberado automaticamente após este período.
                     </p>
                     <p class="mt-4 text-lg font-semibold text-white">
                         Basta um único e-mail. Reembolso integral, sem perguntas, sem burocracia e sem ressentimentos. O risco é absolutamente zero.
@@ -179,10 +209,10 @@
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ainda tem dúvidas?</h2>
             <div class="space-y-4">
+                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Vou receber o código dos apps mesmo?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Sim! Após o período de garantia de 7 dias, você receberá o acesso para baixar os arquivos HTML, CSS e JS de todas as ferramentas. Você terá a liberdade de estudá-los, modificá-los e até revendê-los, construindo uma nova fonte de renda se desejar.</p></div></div>
                 <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">E se eu não conseguir clientes?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Os aplicativos foram desenhados para te dar o método e as ferramentas exatas para a prospecção. O risco de não conseguir é muito maior se você continuar tentando sem um plano claro. Seguindo o passo a passo, você terá um caminho testado e validado para abordar e fechar contratos.</p></div></div>
                 <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Não tenho dinheiro para investir agora.</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Esta suíte tem um valor simbólico justamente para ser o investimento de menor risco e maior potencial de retorno que você pode fazer. O valor do seu primeiro contrato como gestor de tráfego (que pode ser de R$500, R$1.000 ou mais) pagará por este acesso dezenas de vezes.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Não tenho tempo para estudar.</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Perfeito! Estes não são cursos longos e teóricos. São aplicativos práticos e diretos ao ponto, feitos para serem USADOS em minutos. O objetivo é ação e automação, não acumular conhecimento.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Por quanto tempo terei acesso?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">O acesso à suíte de aplicativos é vitalício. Você compra uma vez e pode usar as ferramentas para prospectar clientes para sempre.</p></div></div>
+                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Por quanto tempo terei acesso?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">O acesso à suíte de aplicativos e às aulas é vitalício. Você compra uma vez e pode usar as ferramentas para prospectar clientes para sempre.</p></div></div>
             </div>
         </div>
     </div>
@@ -191,18 +221,30 @@
     <footer class="bg-black/30 py-8 border-t border-white/5"><div class="container mx-auto px-6 text-center text-gray-500"><p>&copy; 2025 @euandersonrego. Todos os direitos reservados.</p><p class="text-sm mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p></div></footer>
 
     <script>
+        // Lucide Icons Render
+        lucide.createIcons();
+    
         // Accordion functionality
         document.querySelectorAll('.accordion-header').forEach(button => {
             button.addEventListener('click', () => {
                 const accordionContent = button.nextElementSibling;
                 const isActive = button.classList.contains('active');
+                
+                // Close all other accordions
                 document.querySelectorAll('.accordion-header').forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.nextElementSibling.style.maxHeight = 0;
+                    if (btn !== button) {
+                       btn.classList.remove('active');
+                       btn.nextElementSibling.style.maxHeight = 0;
+                    }
                 });
+                
+                // Toggle the clicked one
                 if (!isActive) {
                     button.classList.add('active');
                     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                } else {
+                    button.classList.remove('active');
+                    accordionContent.style.maxHeight = 0;
                 }
             });
         });
