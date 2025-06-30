@@ -17,118 +17,155 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* Applying Inter font to the whole body */
+        :root {
+            --bg-dark: #0A0A0A;
+            --bg-light: #111111;
+            --brand-green: #22c55e;
+            --brand-green-light: #4ade80;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #050608;
-            background-image: radial-gradient(circle at top, #1F2937 0%, #050608 50%);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
-        /* Custom styles for the CTA button shadow */
-        .cta-button-shadow {
-            box-shadow: 0px 10px 30px -5px rgba(34, 197, 94, 0.4);
+
+        .animated-gradient-background {
+            background: linear-gradient(-45deg, var(--bg-dark), #0d1a12, var(--bg-dark), #0a0a1a);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
         }
-        /* Style for the accordion */
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cta-button {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.5), 0 0 50px rgba(34, 197, 94, 0.3);
+        }
+
+        .glass-card-interactive {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .glass-card-interactive:hover {
+            border-color: var(--brand-green);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Accordion Style */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .accordion-header .accordion-icon {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .accordion-header.active .accordion-icon {
-            transform: rotate(45deg);
+            transform: rotate(135deg);
         }
-        /* Glassmorphism card with glowing border on hover */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .glass-card:before {
+        
+        .section-glow::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(34, 197, 94, 0.15), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-        }
-        .glass-card:hover:before {
-            opacity: 1;
-        }
-        .glass-card:hover {
-            border-color: rgba(34, 197, 94, 0.5);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1), transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white antialiased">
+<body class="antialiased">
 
     <!-- HERO SECTION -->
-    <div class="py-20 sm:py-28">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                O <span class="text-green-400">Método Exato</span> para Conquistar Seu Primeiro Cliente de Tráfego Pago em 30 Dias
-            </h1>
-            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400">
-                O fim da adivinhação. Tenha em mãos um sistema passo a passo para parar de queimar dinheiro e começar a gerar resultados de verdade, com clareza e previsibilidade.
-            </p>
-            
-             <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="mt-12 inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-lg py-4 px-10 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow">
-                QUERO O MÉTODO E MEU 1º CLIENTE!
-            </a>
+    <div class="relative overflow-hidden animated-gradient-background">
+        <div class="py-24 sm:py-32">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">
+                    O <span class="text-green-400">Método Exato</span> para Conquistar Seu Primeiro Cliente de Tráfego Pago em 30 Dias
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400">
+                    O fim da adivinhação. Tenha em mãos um sistema passo a passo para parar de queimar dinheiro e começar a gerar resultados de verdade, com clareza e previsibilidade.
+                </p>
+                <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="mt-12 inline-block bg-green-500 hover:bg-green-600 text-white font-bold text-lg py-4 px-12 rounded-full cta-button">
+                    DESTRAVAR MEU ACESSO AGORA
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- PAIN SECTION -->
-    <div class="py-16 sm:py-24 border-t border-b border-white/5">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Seu Gerenciador de Anúncios parece um buraco negro de dinheiro?</h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 text-lg">
-                <div class="bg-gray-800/50 ring-1 ring-white/10 p-6 rounded-lg flex items-start space-x-4"><svg class="w-6 h-6 text-red-400 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p>Sente que está <span class="font-bold">queimando o dinheiro</span> do seu cliente (ou o seu próprio) sem gerar vendas.</p></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 p-6 rounded-lg flex items-start space-x-4"><svg class="w-6 h-6 text-red-400 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p>É bombardeado por <span class="font-bold">tanta informação que fica paralisado</span>, sem um plano de ação claro.</p></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 p-6 rounded-lg flex items-start space-x-4"><svg class="w-6 h-6 text-red-400 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p>Tem <span class="font-bold">medo de não gerar resultados</span> e parecer incompetente para seus clientes ou sócios.</p></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 p-6 rounded-lg flex items-start space-x-4"><svg class="w-6 h-6 text-red-400 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p>Sente-se <span class="font-bold">estagnado</span>, vendo concorrentes crescerem enquanto você patina no mesmo lugar.</p></div>
+    <div class="py-20 sm:py-24 bg-black/20">
+        <div class="container mx-auto px-6 reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 tracking-tight">Seu Gerenciador de Anúncios parece um buraco negro de dinheiro?</h2>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-900/50 p-6 rounded-2xl flex items-start space-x-5 border border-transparent hover:border-red-500/50 transition-colors duration-300"><div class="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center"><i data-lucide="dollar-sign" class="w-6 h-6 text-red-400"></i></div><div><h3 class="font-bold text-lg">Queimando Dinheiro</h3><p class="text-gray-400">Você sente que está jogando o dinheiro do seu cliente (ou o seu) no lixo, sem gerar vendas ou resultados concretos.</p></div></div>
+                <div class="bg-gray-900/50 p-6 rounded-2xl flex items-start space-x-5 border border-transparent hover:border-red-500/50 transition-colors duration-300"><div class="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center"><i data-lucide="compass" class="w-6 h-6 text-red-400"></i></div><div><h3 class="font-bold text-lg">Paralisado pela Confusão</h3><p class="text-gray-400">É bombardeado por tanta informação conflitante que não sabe por onde começar, resultando em um plano de ação inexistente.</p></div></div>
+                <div class="bg-gray-900/50 p-6 rounded-2xl flex items-start space-x-5 border border-transparent hover:border-red-500/50 transition-colors duration-300"><div class="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center"><i data-lucide="shield-off" class="w-6 h-6 text-red-400"></i></div><div><h3 class="font-bold text-lg">Medo de Falhar</h3><p class="text-gray-400">O medo de não entregar o que prometeu e parecer incompetente para seus clientes, sócios ou para si mesmo te assombra.</p></div></div>
+                <div class="bg-gray-900/50 p-6 rounded-2xl flex items-start space-x-5 border border-transparent hover:border-red-500/50 transition-colors duration-300"><div class="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center"><i data-lucide="anchor" class="w-6 h-6 text-red-400"></i></div><div><h3 class="font-bold text-lg">Sensação de Estagnação</h3><p class="text-gray-400">Vê concorrentes crescendo e prosperando enquanto você sente que está patinando no mesmo lugar, sem evoluir.</p></div></div>
             </div>
-             <p class="text-center mt-12 text-xl text-gray-300">... então você não precisa de mais um curso, você precisa de um <span class="font-bold text-white">sistema</span>.</p>
+             <p class="text-center mt-16 text-xl text-gray-400 reveal">... se isso soa familiar, você não precisa de mais um curso, você precisa de um <span class="font-bold text-white">sistema.</span></p>
         </div>
     </div>
     
     <!-- ABOUT ME SECTION -->
-    <div class="py-16 sm:py-24"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto text-center"><h2 class="text-3xl font-bold">Quem vai te guiar nesta jornada?</h2><p class="mt-6 text-lg text-gray-400">Olá, eu sou o Anderson Rego. Hoje, eu vivo de gestão de tráfego, mas nem sempre foi assim. No início, eu me senti exatamente como você: frustrado com a overdose de informação, paralisado pelo medo de errar e sem um caminho claro para conquistar o primeiro cliente.</p><p class="mt-4 text-lg text-gray-400">Eu precisei criar meu próprio método na base da tentativa e erro. Depois de investir e testar muito, desenvolvi um processo simples e direto ao ponto para quebrar a inércia, prospectar com confiança e fechar os primeiros contratos.</p><p class="mt-4 text-lg text-gray-300 font-semibold">Todo esse campo de batalha está compilado nesta Suíte de Ferramentas. Meu objetivo é te entregar o atalho, o mapa que eu não tive, para você parar de patinar e começar a agir com um sistema previsível.</p></div></div></div>
+    <div class="py-20 sm:py-24"><div class="container mx-auto px-6 reveal"><div class="max-w-3xl mx-auto text-center"><h2 class="text-3xl font-bold tracking-tight">Quem vai te guiar nesta jornada?</h2><p class="mt-6 text-lg text-gray-400">Olá, eu sou o Anderson Rego. Hoje, eu vivo de gestão de tráfego, mas nem sempre foi assim. No início, eu me senti exatamente como você: frustrado com a overdose de informação, paralisado pelo medo de errar e sem um caminho claro para conquistar o primeiro cliente.</p><p class="mt-4 text-lg text-gray-400">Eu precisei criar meu próprio método na base da tentativa e erro. Depois de investir e testar muito, desenvolvi um processo simples e direto ao ponto para quebrar a inércia, prospectar com confiança e fechar os primeiros contratos.</p><p class="mt-4 text-lg text-white font-semibold">Todo esse campo de batalha está compilado nesta Suíte de Ferramentas. Meu objetivo é te entregar o atalho, o mapa que eu não tive, para você parar de patinar e começar a agir com um sistema previsível.</p></div></div></div>
 
     <!-- SOLUTION & WHAT'S INSIDE SECTION -->
-    <div id="offer" class="py-16 sm:py-24 bg-gray-900/70 border-t border-b border-white/5">
-        <div class="container mx-auto px-6">
+    <div id="offer" class="py-20 sm:py-24 bg-gray-900/70 border-y border-[var(--border-color)] relative section-glow">
+        <div class="container mx-auto px-6 reveal">
             <div class="text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold">Sua Suíte de Ferramentas para Gerar Resultados</h2>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Sua Suíte de Ferramentas para Gerar Resultados</h2>
                 <p class="mt-4 text-lg text-gray-400">Receba acesso imediato a um arsenal completo que automatiza sua prospecção e te posiciona como um profissional de alto nível.</p>
             </div>
-            <div class="mt-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                <!-- Card Item - Layout fix applied -->
-                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/30">01</span><div><h4 class="text-xl font-bold mt-4">Central de Prospecção</h4><p class="text-gray-400 mt-2">Seu centro de comando para encontrar clientes, reunindo as melhores estratégias e ferramentas de prospecção em um só lugar.</p></div><p class="text-green-400 font-semibold mt-6">+ Aula passo a passo</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/30">02</span><div><h4 class="text-xl font-bold mt-4">Arsenal de Prospecção</h4><p class="text-gray-400 mt-2">Acelere sua comunicação com modelos de mensagens de alta conversão para cada etapa do funil de vendas.</p></div><p class="text-green-400 font-semibold mt-6">+ Aula passo a passo</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/30">03</span><div><h4 class="text-xl font-bold mt-4">Gerador de Propostas</h4><p class="text-gray-400 mt-2">Crie propostas comerciais profissionais e conduza a primeira reunião com o cliente usando um roteiro estratégico.</p></div><p class="text-green-400 font-semibold mt-6">+ Aula passo a passo</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between bg-green-400/10"><span class="text-5xl font-black text-green-400">BÔNUS</span><div><h4 class="text-xl font-bold mt-4 text-green-300">Comunidade Fechada</h4><p class="text-gray-400 mt-2">Acesso ao grupo de alunos para networking, tirar dúvidas diretamente comigo e acelerar seus resultados.</p></div><p class="text-gray-500 font-semibold mt-6 invisible">Bônus</p></div>
-                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between bg-green-400/10"><span class="text-5xl font-black text-green-400">BÔNUS</span><div><h4 class="text-xl font-bold mt-4 text-green-300">Super Aula de Campanha</h4><p class="text-gray-400 mt-2">Um guia prático para criar sua primeira campanha de conversão do zero no Gerenciador de Anúncios.</p></div><p class="text-gray-500 font-semibold mt-6 invisible">Bônus</p></div>
+            <div class="mt-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="glass-card-interactive p-6 rounded-xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/20">01</span><div><h4 class="text-xl font-bold mt-4">Central de Prospecção</h4><p class="text-gray-400 mt-2 text-sm">Seu centro de comando para encontrar clientes em um só lugar.</p></div><p class="text-green-400 font-semibold mt-4 text-sm">+ Aula passo a passo</p></div>
+                <div class="glass-card-interactive p-6 rounded-xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/20">02</span><div><h4 class="text-xl font-bold mt-4">Arsenal de Prospecção</h4><p class="text-gray-400 mt-2 text-sm">Modelos de mensagens de alta conversão para cada etapa do funil.</p></div><p class="text-green-400 font-semibold mt-4 text-sm">+ Aula passo a passo</p></div>
+                <div class="glass-card-interactive p-6 rounded-xl flex flex-col justify-between"><span class="text-5xl font-black text-green-400/20">03</span><div><h4 class="text-xl font-bold mt-4">Gerador de Propostas</h4><p class="text-gray-400 mt-2 text-sm">Crie propostas profissionais e roteiros de reunião estratégicos.</p></div><p class="text-green-400 font-semibold mt-4 text-sm">+ Aula passo a passo</p></div>
+                <div class="glass-card-interactive p-6 rounded-xl flex flex-col justify-between bg-green-500/5"><span class="font-bold text-green-400">BÔNUS</span><div><h4 class="text-xl font-bold mt-4 text-green-300">Comunidade Fechada</h4><p class="text-gray-400 mt-2 text-sm">Networking, suporte direto comigo e aceleração de resultados.</p></div><div class="h-6"></div></div>
+                <div class="glass-card-interactive p-6 rounded-xl flex flex-col justify-between bg-green-500/5"><span class="font-bold text-green-400">BÔNUS</span><div><h4 class="text-xl font-bold mt-4 text-green-300">Super Aula de Campanha</h4><p class="text-gray-400 mt-2 text-sm">Guia prático para sua primeira campanha de conversão do zero.</p></div><div class="h-6"></div></div>
             </div>
         </div>
     </div>
     
     <!-- SPECIAL BONUS SECTION -->
-    <div class="py-16 sm:py-24">
-        <div class="container mx-auto px-6">
-            <div class="bg-gray-800/50 ring-1 ring-green-400/30 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
+    <div class="py-20 sm:py-24">
+        <div class="container mx-auto px-6 reveal">
+            <div class="bg-gradient-to-br from-gray-900 to-black/50 ring-1 ring-green-400/30 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
                 <div class="flex flex-col items-center gap-4">
                     <span class="bg-green-400/10 text-green-300 font-bold py-1 px-4 rounded-full text-sm">BÔNUS ESPECIAL (LIBERADO APÓS 7 DIAS)</span>
-                    <h3 class="text-3xl font-bold mt-2">Receba o Código-Fonte dos Apps (White Label)</h3>
+                    <h3 class="text-3xl font-bold mt-2 tracking-tight">Receba o Código-Fonte dos Apps (White Label)</h3>
                 </div>
                 <div class="mt-6 max-w-2xl mx-auto">
                     <p class="text-lg text-gray-400">
@@ -142,28 +179,21 @@
         </div>
     </div>
 
-    <!-- VALUE ANCHORING SECTION - UPDATED LAYOUT -->
-    <div class="py-16 sm:py-24 border-t border-white/5">
-        <div class="container mx-auto px-6 max-w-3xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold">O Valor Real de Tudo Que Você Leva</h2>
+    <!-- VALUE ANCHORING SECTION -->
+    <div class="py-20 sm:py-24 border-y border-[var(--border-color)]">
+        <div class="container mx-auto px-6 max-w-3xl text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">O Valor Real de Tudo Que Você Leva</h2>
             <p class="mt-4 text-lg text-gray-400">Se fosse comprar cada item separadamente, este seria o investimento. Mas hoje, a condição é especial:</p>
             <div class="mt-12 space-y-2 max-w-2xl mx-auto">
-                <!-- Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Arsenal de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 297,00</span></div>
-                <!-- Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Central de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
-                <!-- Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Gerador de Propostas</span><span class="text-lg font-bold text-gray-500 line-through">R$ 147,00</span></div>
-                <!-- Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Aulas Práticas de Implementação</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
-                <!-- Bonus Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-3"><i data-lucide="gem" class="w-6 h-6 text-green-400 flex-shrink-0"></i><div><h4 class="text-lg text-left">Código Fonte dos Apps (PLR)</h4><p class="text-sm text-left text-gray-400">Direitos de Revenda (Liberado após 7 dias)</p></div></div><span class="text-lg font-bold text-gray-500 line-through">R$ 497,00</span></div>
-                <!-- Bonus Item -->
-                <div class="bg-gray-800/50 p-4 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-3"><i data-lucide="users" class="w-6 h-6 text-green-400 flex-shrink-0"></i><div><h4 class="text-lg text-left">Comunidade Fechada</h4><p class="text-sm text-left text-gray-400">Networking e Suporte Direto</p></div></div><span class="text-lg font-bold text-gray-500 line-through">R$ 497,00</span></div>
-                <!-- Free Bonus Item -->
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Arsenal de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 297,00</span></div>
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Central de Prospecção</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Gerador de Propostas</span><span class="text-lg font-bold text-gray-500 line-through">R$ 147,00</span></div>
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center"><span class="text-lg">Aulas Práticas de Implementação</span><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-3"><i data-lucide="gem" class="w-6 h-6 text-green-400"></i><p class="text-left">Código Fonte dos Apps (PLR)</p></div><span class="text-lg font-bold text-gray-500 line-through">R$ 497,00</span></div>
+                <div class="bg-gray-900/50 p-4 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-3"><i data-lucide="users" class="w-6 h-6 text-green-400"></i><p class="text-left">Comunidade Fechada</p></div><span class="text-lg font-bold text-gray-500 line-through">R$ 497,00</span></div>
                 <div class="bg-green-500/10 p-4 rounded-lg flex justify-between items-center"><span class="text-lg text-green-300">Super Aula Bônus</span><span class="text-lg font-bold text-green-400">De Graça</span></div>
             </div>
-            <div class="mt-8 bg-gray-800/50 ring-1 ring-white/10 rounded-lg p-6 max-w-md mx-auto">
+            <div class="mt-8 bg-gray-900/50 ring-1 ring-white/10 rounded-lg p-6 max-w-md mx-auto">
                 <p class="text-lg text-gray-300">Valor total que você <span class="font-bold">NÃO</span> vai pagar:</p>
                 <p class="text-5xl font-extrabold text-red-500 line-through mt-2">R$ 1.832,00</p>
             </div>
@@ -171,10 +201,10 @@
     </div>
 
     <!-- OBJECTION HANDLING SECTION -->
-    <div class="py-16 sm:py-24">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center">Antes de decidir, vamos ser diretos:</h2>
-            <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+    <div class="py-20 sm:py-24">
+        <div class="container mx-auto px-6 max-w-5xl reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center tracking-tight">Antes de decidir, vamos ser diretos:</h2>
+            <div class="mt-16 grid md:grid-cols-3 gap-10 text-center">
                 <div>
                     <div class="flex justify-center items-center h-16 w-16 bg-green-500/10 text-green-400 rounded-full mx-auto"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
                     <h3 class="mt-6 text-xl font-bold">Isso não é um curso, é um arsenal.</h3>
@@ -186,9 +216,9 @@
                     <p class="mt-2 text-gray-400">O medo de errar paralisa. Por isso, este kit te dá o processo exato que eu uso. Você não precisa adivinhar o que fazer, apenas seguir o sistema para ter confiança e gerar resultados.</p>
                 </div>
                 <div>
-                    <div class="flex justify-center items-center h-16 w-16 bg-green-500/10 text-green-400 rounded-full mx-auto"><i data-lucide="dollar-sign" class="w-8 h-8"></i></div>
+                    <div class="flex justify-center items-center h-16 w-16 bg-green-500/10 text-green-400 rounded-full mx-auto"><i data-lucide="crosshair" class="w-8 h-8"></i></div>
                     <h3 class="mt-6 text-xl font-bold">O risco é continuar paralisado.</h3>
-                    <p class="mt-2 text-gray-400">O investimento para ter acesso a todo este arsenal é menor que um lanche. O custo de continuar perdido, queimando dinheiro e sem clientes é infinitamente maior. A escolha é sua.</p>
+                    <p class="mt-2 text-gray-400">O investimento para ter acesso a este arsenal é menor que um lanche. O custo de continuar perdido, queimando dinheiro e sem clientes é infinitamente maior. A escolha é sua.</p>
                 </div>
             </div>
         </div>
@@ -196,32 +226,30 @@
 
 
     <!-- CTA Section -->
-    <div id="buy-now" class="py-16 sm:py-24 bg-gray-900/70 border-t border-b border-white/5">
-        <div class="container mx-auto px-6 text-center">
-            <div class="bg-gray-800 ring-1 ring-white/10 max-w-2xl mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl">
+    <div id="buy-now" class="py-20 sm:py-24 bg-gradient-to-t from-black/50 to-transparent relative section-glow">
+        <div class="container mx-auto px-6 text-center reveal">
+            <div class="bg-gray-900/80 ring-2 ring-green-500 max-w-2xl mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl shadow-green-500/10 backdrop-blur-sm">
                 <p class="text-sm font-bold uppercase tracking-widest text-green-400">ÚLTIMA CHAMADA</p>
-                <h3 class="text-2xl font-bold mt-4">Tenha o método e as ferramentas para conseguir seu 1º cliente:</h3>
-                <p class="text-6xl font-extrabold my-4 text-white">R$ 37</p>
-                <p class="text-xl mb-6">ou em <span class="font-bold text-green-400">5x de R$ 8,19</span> no cartão</p>
-                <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-gray-900 font-bold text-2xl py-5 px-14 rounded-lg transition-transform transform hover:scale-105 cta-button-shadow w-full">QUERO ACESSO IMEDIATO COM TODOS OS BÔNUS!</a>
-                <p class="mt-6 text-gray-400">Compra 100% segura. Acesso vitalício. Risco Zero.</p>
+                <h3 class="text-3xl font-bold mt-4 tracking-tight">Tenha o método e as ferramentas para conseguir seu 1º cliente:</h3>
+                <p class="text-7xl font-extrabold my-4 text-white">R$ 37</p>
+                <p class="text-xl mb-8">ou em <span class="font-bold text-green-400">5x de R$ 8,19</span> no cartão</p>
+                <a href="https://pay.hotmart.com/E100523791L" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-5 px-16 rounded-full cta-button w-full">QUERO ACESSO IMEDIATO COM TODOS OS BÔNUS!</a>
+                <p class="mt-6 text-gray-400 text-sm">Compra 100% segura. Acesso vitalício. Risco Zero.</p>
             </div>
         </div>
     </div>
     
     <!-- GUARANTEE SECTION -->
-    <div class="py-16 sm:py-24 bg-black/30">
-        <div class="container mx-auto px-6">
-            <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
+    <div class="py-20 sm:py-24 bg-black/30">
+        <div class="container mx-auto px-6 reveal">
+            <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
                 <div class="flex justify-center items-center gap-4">
-                    <svg class="w-10 h-10 text-green-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                    </svg>
-                    <h3 class="text-3xl font-bold">Garantia Incondicional de 7 Dias</h3>
+                    <i data-lucide="shield-check" class="w-10 h-10 text-green-400 flex-shrink-0"></i>
+                    <h3 class="text-3xl font-bold tracking-tight">Garantia Incondicional de 7 Dias</h3>
                 </div>
                 <div class="mt-6 max-w-2xl mx-auto">
                     <p class="text-lg text-gray-400">
-                        Seu investimento é 100% seguro. Você tem 7 dias completos para acessar toda a suíte de aplicativos. Se ao final desse período você não sentir que este foi o melhor e mais rápido caminho para destravar seu primeiro cliente, eu insisto que peça seu dinheiro de volta. Os Bônus (Comunidade e Código-Fonte) serão liberados automaticamente após este período.
+                        Seu investimento é 100% seguro. Você tem 7 dias completos para acessar a suíte de aplicativos. Se ao final desse período você não sentir que este foi o melhor e mais rápido caminho para destravar seu primeiro cliente, eu insisto que peça seu dinheiro de volta. Os Bônus (Comunidade e Código-Fonte) serão liberados automaticamente após este período.
                     </p>
                     <p class="mt-4 text-lg font-semibold text-white">
                         Basta um único e-mail. Reembolso integral, sem perguntas, sem burocracia e sem ressentimentos. O risco é absolutamente zero.
@@ -231,16 +259,16 @@
         </div>
     </div>
     
-    <!-- FAQ SECTION - EXPANDED -->
-    <div class="py-16 sm:py-24 bg-gray-800/20 border-t border-white/5">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ainda tem dúvidas?</h2>
+    <!-- FAQ SECTION -->
+    <div class="py-20 sm:py-24 bg-gray-900/20 border-t border-[var(--border-color)]">
+        <div class="container mx-auto px-6 max-w-3xl reveal">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Ainda tem dúvidas?</h2>
             <div class="space-y-4">
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Qual a diferença disto para outros cursos?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Simples: não é um curso, é um arsenal. A maioria dos cursos te afoga em teoria. Nós te entregamos um sistema de ação rápida com ferramentas prontas para usar. O foco é em implementação e resultados, não em horas de aulas que você nunca vai terminar.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Não tenho muito tempo. Vou conseguir aplicar?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Este kit foi criado para quem não tem tempo a perder. As ferramentas são projetadas para economizar seu tempo, automatizando tarefas de prospecção e criação de propostas. O método é um atalho direto ao ponto, para você agir sem rodeios.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Preciso ser um expert em tecnologia?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Não. O método foi desenhado para trazer clareza e simplicidade. Se você se sente perdido com a complexidade das plataformas, este sistema vai te dar o passo a passo que faltava. E o código dos apps bônus é em HTML simples, fácil de editar por você ou qualquer programador.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">E se não funcionar para o meu nicho?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Os princípios de prospecção e geração de valor são universais. O método te ensina a estrutura para encontrar e convencer clientes, independentemente do mercado. Na comunidade, você terá contato com pessoas de diversos nichos e poderá tirar dúvidas específicas diretamente comigo.</p></div></div>
-                <div class="bg-gray-800/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Por quanto tempo terei acesso?</span><svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path></svg></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">O acesso à suíte de aplicativos, às aulas e à comunidade é vitalício. Você compra uma vez e pode usar as ferramentas e o grupo de networking para sempre, incluindo todas as futuras atualizações.</p></div></div>
+                <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Qual a diferença disto para outros cursos?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Simples: não é um curso, é um arsenal. A maioria dos cursos te afoga em teoria. Nós te entregamos um sistema de ação rápida com ferramentas prontas para usar. O foco é em implementação e resultados, não em horas de aulas que você nunca vai terminar.</p></div></div>
+                <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Não tenho muito tempo. Vou conseguir aplicar?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Este kit foi criado para quem não tem tempo a perder. As ferramentas são projetadas para economizar seu tempo, automatizando tarefas de prospecção e criação de propostas. O método é um atalho direto ao ponto, para você agir sem rodeios.</p></div></div>
+                <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Preciso ser um expert em tecnologia?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Não. O método foi desenhado para trazer clareza e simplicidade. Se você se sente perdido com a complexidade das plataformas, este sistema vai te dar o passo a passo que faltava. E o código dos apps bônus é em HTML simples, fácil de editar por você ou qualquer programador.</p></div></div>
+                <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">E se não funcionar para o meu nicho?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Os princípios de prospecção e geração de valor são universais. O método te ensina a estrutura para encontrar e convencer clientes, independentemente do mercado. Na comunidade, você terá contato com pessoas de diversos nichos e poderá tirar dúvidas específicas diretamente comigo.</p></div></div>
+                <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Por quanto tempo terei acesso?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">O acesso à suíte de aplicativos, às aulas e à comunidade é vitalício. Você compra uma vez e pode usar as ferramentas e o grupo de networking para sempre, incluindo todas as futuras atualizações.</p></div></div>
             </div>
         </div>
     </div>
@@ -249,44 +277,60 @@
     <footer class="bg-black/30 py-8 border-t border-white/5"><div class="container mx-auto px-6 text-center text-gray-500"><p>&copy; 2025 @euandersonrego. Todos os direitos reservados.</p><p class="text-sm mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p></div></footer>
 
     <script>
-        // --- Page scripts ---
-
-        // Lucide Icons Render
+        // --- Lucide Icons Render ---
         lucide.createIcons();
     
-        // Accordion functionality
+        // --- Scroll Reveal Animation ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Accordion Functionality ---
         document.querySelectorAll('.accordion-header').forEach(button => {
             button.addEventListener('click', () => {
                 const accordionContent = button.nextElementSibling;
                 const isActive = button.classList.contains('active');
                 
-                // Close all other accordions
-                document.querySelectorAll('.accordion-header').forEach(btn => {
-                    if (btn !== button) {
-                       btn.classList.remove('active');
-                       btn.nextElementSibling.style.maxHeight = 0;
-                    }
-                });
+                // This closes all other accordions, uncomment if you want that behavior
+                // document.querySelectorAll('.accordion-header').forEach(btn => {
+                //     if (btn !== button) {
+                //        btn.classList.remove('active');
+                //        btn.nextElementSibling.style.maxHeight = null;
+                //     }
+                // });
                 
-                // Toggle the clicked one
-                if (!isActive) {
-                    button.classList.add('active');
+                button.classList.toggle('active');
+                if (button.classList.contains('active')) {
                     accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
                 } else {
-                    button.classList.remove('active');
-                    accordionContent.style.maxHeight = 0;
+                    accordionContent.style.maxHeight = null;
                 }
             });
         });
 
-        // Glowing effect for glass cards
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
+        // --- Interactive Card Tilt Effect ---
+        const cards = document.querySelectorAll('.glass-card-interactive');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                card.style.setProperty('--x', `${x}px`);
-                card.style.setProperty('--y', `${y}px`);
+                const { width, height } = rect;
+                const rotateX = (y / height - 0.5) * -15; // Invert for natural feel
+                const rotateY = (x / width - 0.5) * 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
             });
         });
     </script>
