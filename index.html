@@ -365,6 +365,26 @@
     <!-- FOOTER -->
     <footer class="bg-black/30 py-8 border-t border-white/5"><div class="container mx-auto px-6 text-center text-gray-500"><p>&copy; 2025 @euandersonrego. Todos os direitos reservados.</p><p class="text-sm mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p></div></footer>
 
+    <!-- FLOATING CONTACT BAR -->
+    <div id="contact-bar" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-full max-w-md sm:max-w-lg z-50">
+        <div class="container mx-auto bg-black/40 backdrop-blur-lg rounded-full shadow-lg border border-white/10 p-2 flex items-center justify-around gap-2">
+            <a href="https://api.whatsapp.com/send?phone=5583986249406&text=Ol%C3%A1!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Kit." target="_blank" class="flex-1 flex items-center justify-center gap-2 text-white font-semibold px-4 py-2 rounded-full hover:bg-white/10 transition-colors duration-300">
+                <svg role="img" height="20" width="20" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-.758-.375-1.03-.464-.272-.09-.47-.149-.669.149-.198.297-.758.935-.935 1.133-.178.198-.355.223-.654.075-.297-.149-1.255-.464-2.39-1.475-.883-.788-1.478-1.76-1.656-2.058-.178-.297-.011-.464.135-.614.124-.124.297-.297.446-.446.149-.149.198-.297.297-.495.099-.198.05-.375-.025-.524-.075-.149-.669-1.612-.914-2.207-.242-.579-.487-.5-.669-.51-.178-.012-.375-.012-.572-.012-.198 0-.52.075-.792.375-.272.297-1.03.935-1.03 2.253 0 1.318 1.055 2.615 1.204 2.813.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.12.572-.075 1.758-.716 2.006-1.413.248-.697.248-1.289.173-1.413-.074-.124-.272-.198-.572-.347z"></path><path d="M12.075 2.012C6.59 2.012 2.125 6.485 2.125 12.008c0 1.74.443 3.372 1.254 4.815L2.06 22.32l5.694-1.4c1.386.762 2.96 1.192 4.592 1.192 5.485 0 9.95-4.473 9.95-9.925C22.025 6.485 17.56 2.012 12.075 2.012zM12.075 20.13c-1.595 0-3.107-.42-4.42-1.186l-.315-.187-3.34-.873.892-3.275-.205-.328a8.096 8.096 0 0 1-1.254-4.285c0-4.49 3.65-8.158 8.14-8.158s8.14 3.668 8.14 8.158c0 4.49-3.65 8.158-8.14 8.158z"></path></svg>
+                <span class="hidden sm:inline">Fale no WhatsApp</span>
+                <span class="sm:hidden">WhatsApp</span>
+            </a>
+            <div class="h-8 w-px bg-white/20"></div> <!-- Separator -->
+            <a href="https://www.instagram.com/euandersonrego" target="_blank" class="flex-1 flex items-center justify-center gap-2 text-white font-semibold px-4 py-2 rounded-full hover:bg-white/10 transition-colors duration-300">
+                <svg role="img" height="20" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <defs><radialGradient id="insta-gradient" r="150%" cx="30%" cy="107%"><stop stop-color="#fdf497" offset="0"></stop><stop stop-color="#fdf497" offset="0.05"></stop><stop stop-color="#fd5949" offset="0.45"></stop><stop stop-color="#d6249f" offset="0.6"></stop><stop stop-color="#285AEB" offset="0.9"></stop></radialGradient></defs>
+                    <path fill="url(#insta-gradient)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.333.07 8.74 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"></path>
+                </svg>
+                <span class="hidden sm:inline">Siga no Instagram</span>
+                <span class="sm:hidden">Instagram</span>
+            </a>
+        </div>
+    </div>
+
     <!-- Particles.js CDN -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -397,8 +417,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: unobserve after revealing
-                    // observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15 });
@@ -426,13 +444,11 @@
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const { width, height } = rect;
-                const rotateX = (y / height - 0.5) * -20; // More pronounced rotation
+                const rotateX = (y / height - 0.5) * -20;
                 const rotateY = (x / width - 0.5) * 20;
                 
                 card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
                 if (glow) {
-                    glow.style.setProperty('--x', `${x}px`);
-                    glow.style.setProperty('--y', `${y}px`);
                     glow.children[0].style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
                 }
             });
@@ -466,6 +482,15 @@
                 cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
                 cursorOutline.style.backgroundColor = 'rgba(34, 197, 94, 0.2)';
             });
+        });
+
+        // --- Adjust body padding for fixed contact bar ---
+        window.addEventListener('load', () => {
+            const contactBar = document.getElementById('contact-bar');
+            if (contactBar) {
+                const barHeight = contactBar.offsetHeight + 16; // 16px for the bottom-4 margin
+                document.body.style.paddingBottom = `${barHeight}px`;
+            }
         });
 
     </script>
