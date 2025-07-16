@@ -70,7 +70,6 @@
             background-color: var(--bg-dark);
             color: var(--text-primary);
             overflow-x: hidden;
-            cursor: none;
         }
         #page-background {
             position: fixed;
@@ -97,32 +96,6 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
-            pointer-events: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
-        }
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--brand-green);
-        }
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(34, 197, 94, 0.2);
-        }
-        body:hover .cursor-dot, body:hover .cursor-outline {
-            opacity: 1;
-        }
-
         /* CTA Button Enhanced */
         .cta-button {
             position: relative;
@@ -229,8 +202,6 @@
 <body class="antialiased">
     <div id="page-background"></div>
     <div id="particles-js"></div>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ3KS4D9"
@@ -239,7 +210,7 @@
 
     <!-- HERO SECTION -->
     <div class="relative overflow-hidden min-h-screen flex items-center">
-        <div class="container mx-auto px-6 text-center reveal">
+        <div class="container mx-auto px-4 sm:px-6 text-center reveal">
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400">
                 Chega de ter <span class="text-green-400">conhecimento parado</span>. Ative seu potencial e transforme o que você sabe em clientes que te pagam.
             </h1>
@@ -254,7 +225,7 @@
 
     <!-- PAIN SECTION (NARRATIVE) -->
     <div class="py-20 sm:py-32 bg-black/20">
-        <div class="container mx-auto px-6 reveal max-w-4xl">
+        <div class="container mx-auto px-4 sm:px-6 reveal max-w-4xl">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Você conhece essa sensação?</h2>
             <div class="text-lg text-gray-300 space-y-6 text-center leading-relaxed">
                 <p>Você é uma verdadeira <span class="text-white font-semibold">biblioteca ambulante de tráfego pago</span>. Já investiu em cursos, devorou aulas no YouTube e seu computador tem mais certificados em PDF do que fotos de família.</p>
@@ -269,7 +240,7 @@
     
     <!-- SOLUTION INTRODUCTION -->
     <div class="py-20 sm:py-32 text-center">
-        <div class="container mx-auto px-6 reveal max-w-4xl">
+        <div class="container mx-auto px-4 sm:px-6 reveal max-w-4xl">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">E se você tivesse a <span class="text-green-400">chave da ignição</span>?</h2>
             <p class="mt-6 text-lg md:text-xl text-gray-400">E se, em vez de mais um curso, você tivesse em mãos um sistema completo de aplicativos para agir? Ferramentas práticas para transformar toda a sua teoria em um negócio real.</p>
             <div class="mt-12 bg-gray-900/50 border border-green-500/30 p-8 rounded-2xl">
@@ -282,7 +253,7 @@
 
     <!-- OFFER DETAILS (THE 3 APPS) -->
     <div id="offer" class="py-20 sm:py-32 bg-gray-900/20 border-y border-[var(--border-color)] relative section-glow">
-        <div class="container mx-auto px-6 reveal">
+        <div class="container mx-auto px-4 sm:px-6 reveal">
             <div class="text-center max-w-3xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Aqui está o Sistema de Ativação que você vai receber:</h2>
             </div>
@@ -296,14 +267,14 @@
     
     <!-- VALUE ANCHORING & OFFER SECTION -->
     <div class="py-20 sm:py-32 border-y border-[var(--border-color)] bg-black/20">
-        <div class="container mx-auto px-6 max-w-4xl text-center reveal">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center reveal">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">E para garantir seu sucesso, você ainda leva 2 Bônus Exclusivos:</h2>
             <div class="mt-12 space-y-4 max-w-3xl mx-auto text-left">
-                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="radar" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 1: Central de Prospecção</span></div><span class="text-lg font-bold text-gray-500 line-through">R$ 97,00</span></div>
-                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="send" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 2: Arsenal de Prospecção</span></div><span class="text-lg font-bold text-gray-500 line-through">R$ 97,00</span></div>
-                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="file-check-2" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 3: Gerador de Propostas</span></div><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
-                <div class="bg-green-500/10 p-5 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-4"><i data-lucide="users" class="w-6 h-6 text-green-400"></i><span class="text-lg font-semibold text-green-300">BÔNUS 1: Acesso à Comunidade VIP</span></div><span class="text-lg font-bold text-gray-500 line-through">R$ 197,00</span></div>
-                <div class="bg-green-500/10 p-5 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-4"><i data-lucide="clapperboard" class="w-6 h-6 text-green-400"></i><span class="text-lg font-semibold text-green-300">BÔNUS 2: Aula "Campanha do Zero"</span></div><span class="text-lg font-bold text-gray-500 line-through">R$ 147,00</span></div>
+                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="radar" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 1: Central de Prospecção</span></div><span class="text-lg font-bold text-gray-500 line-through whitespace-nowrap">R$ 97,00</span></div>
+                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="send" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 2: Arsenal de Prospecção</span></div><span class="text-lg font-bold text-gray-500 line-through whitespace-nowrap">R$ 97,00</span></div>
+                <div class="bg-gray-900/50 p-5 rounded-lg flex justify-between items-center"><div class="flex items-center gap-4"><i data-lucide="file-check-2" class="w-6 h-6 text-green-400"></i><span class="text-lg">FERRAMENTA 3: Gerador de Propostas</span></div><span class="text-lg font-bold text-gray-500 line-through whitespace-nowrap">R$ 197,00</span></div>
+                <div class="bg-green-500/10 p-5 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-4"><i data-lucide="users" class="w-6 h-6 text-green-400"></i><span class="text-lg font-semibold text-green-300">BÔNUS 1: Acesso à Comunidade VIP</span></div><span class="text-lg font-bold text-gray-500 line-through whitespace-nowrap">R$ 197,00</span></div>
+                <div class="bg-green-500/10 p-5 rounded-lg flex justify-between items-center ring-1 ring-green-400/50"><div class="flex items-center gap-4"><i data-lucide="clapperboard" class="w-6 h-6 text-green-400"></i><span class="text-lg font-semibold text-green-300">BÔNUS 2: Aula "Campanha do Zero"</span></div><span class="text-lg font-bold text-gray-500 line-through whitespace-nowrap">R$ 147,00</span></div>
             </div>
             <div class="mt-10 bg-gray-900/50 ring-1 ring-white/10 rounded-lg p-6 max-w-md mx-auto">
                 <p class="text-lg text-gray-300">Valor Total de tudo que você leva:</p>
@@ -314,7 +285,7 @@
 
     <!-- CTA Section -->
     <div id="buy-now" class="py-20 sm:py-32 bg-gradient-to-t from-black/50 to-transparent relative section-glow">
-        <div class="container mx-auto px-6 text-center reveal">
+        <div class="container mx-auto px-4 sm:px-6 text-center reveal">
             <div class="card-3d bg-gray-900/80 ring-2 ring-green-500 max-w-2xl mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl shadow-green-500/10">
                 <div class="glow"></div>
                 <p class="text-sm font-bold uppercase tracking-widest text-green-400">OFERTA DE ATIVAÇÃO</p>
@@ -330,7 +301,7 @@
     
     <!-- GUARANTEE SECTION -->
     <div class="py-20 sm:py-32 bg-black/30">
-        <div class="container mx-auto px-6 reveal">
+        <div class="container mx-auto px-4 sm:px-6 reveal">
             <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-2xl max-w-4xl mx-auto p-8 md:p-12 text-center">
                 <div class="flex flex-col justify-center items-center gap-6">
                     <i data-lucide="shield-check" class="w-24 h-24 text-green-400"></i>
@@ -347,7 +318,7 @@
     
     <!-- FAQ SECTION -->
     <div class="py-20 sm:py-32 bg-gray-900/20 border-t border-[var(--border-color)]">
-        <div class="container mx-auto px-6 max-w-3xl reveal">
+        <div class="container mx-auto px-4 sm:px-6 max-w-3xl reveal">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight">Ainda tem dúvidas?</h2>
             <div class="space-y-4">
                 <div class="bg-gray-900/50 ring-1 ring-white/10 rounded-lg"><button class="accordion-header w-full flex justify-between items-center text-left p-6"><span class="text-xl font-semibold">Este kit é para quem está começando do zero?</span><i data-lucide="plus" class="accordion-icon w-6 h-6 text-green-400"></i></button><div class="accordion-content"><p class="p-6 pt-0 text-gray-400">Este kit é ideal para quem já possui o conhecimento teórico de tráfego pago (fez cursos, assistiu aulas), mas se sente travado na hora de prospectar e fechar o primeiro cliente. Ele não ensina tráfego do zero, mas te dá as ferramentas de ação para monetizar o que você já sabe.</p></div></div>
@@ -358,10 +329,10 @@
     </div>
     
     <!-- FOOTER -->
-    <footer class="bg-black/30 py-8 border-t border-white/5"><div class="container mx-auto px-6 text-center text-gray-500"><p>&copy; 2025 @euandersonrego. Todos os direitos reservados.</p><p class="text-sm mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p></div></footer>
+    <footer class="bg-black/30 py-8 border-t border-white/5"><div class="container mx-auto px-4 sm:px-6 text-center text-gray-500"><p>&copy; 2025 @euandersonrego. Todos os direitos reservados.</p><p class="text-sm mt-2">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p></div></footer>
 
     <!-- FLOATING CONTACT BAR -->
-    <div id="contact-bar" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-full max-w-md sm:max-w-lg z-50">
+    <div id="contact-bar" class="fixed bottom-4 left-1/2 -translate-x-1/2 w-full max-w-md sm:max-w-lg z-50 px-4">
         <div class="container mx-auto bg-black/40 backdrop-blur-lg rounded-full shadow-lg border border-white/10 p-2 flex items-center justify-around gap-2">
             <a href="https://api.whatsapp.com/send?phone=5583986249406&text=Ol%C3%A1!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Kit." target="_blank" class="flex-1 flex items-center justify-center gap-2 text-white font-semibold px-4 py-2 rounded-full hover:bg-white/10 transition-colors duration-300">
                 <svg role="img" height="20" width="20" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-.758-.375-1.03-.464-.272-.09-.47-.149-.669.149-.198.297-.758.935-.935 1.133-.178.198-.355.223-.654.075-.297-.149-1.255-.464-2.39-1.475-.883-.788-1.478-1.76-1.656-2.058-.178-.297-.011-.464.135-.614.124-.124.297-.297.446-.446.149-.149.198-.297.297-.495.099-.198.05-.375-.025-.524-.075-.149-.669-1.612-.914-2.207-.242-.579-.487-.5-.669-.51-.178-.012-.375-.012-.572-.012-.198 0-.52.075-.792.375-.272.297-1.03.935-1.03 2.253 0 1.318 1.055 2.615 1.204 2.813.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.12.572-.075 1.758-.716 2.006-1.413.248-.697.248-1.289.173-1.413-.074-.124-.272-.198-.572-.347z"></path><path d="M12.075 2.012C6.59 2.012 2.125 6.485 2.125 12.008c0 1.74.443 3.372 1.254 4.815L2.06 22.32l5.694-1.4c1.386.762 2.96 1.192 4.592 1.192 5.485 0 9.95-4.473 9.95-9.925C22.025 6.485 17.56 2.012 12.075 2.012zM12.075 20.13c-1.595 0-3.107-.42-4.42-1.186l-.315-.187-3.34-.873.892-3.275-.205-.328a8.096 8.096 0 0 1-1.254-4.285c0-4.49 3.65-8.158 8.14-8.158s8.14 3.668 8.14 8.158c0 4.49-3.65 8.158-8.14 8.158z"></path></svg>
@@ -453,33 +424,6 @@
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-            });
-        });
-
-        // --- Custom Cursor ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: 'forwards' });
-        });
-        
-        document.querySelectorAll('a, button, .card-3d').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorOutline.style.backgroundColor = 'rgba(34, 197, 94, 0.4)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorOutline.style.backgroundColor = 'rgba(34, 197, 94, 0.2)';
             });
         });
 
